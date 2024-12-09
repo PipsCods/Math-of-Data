@@ -37,7 +37,7 @@ def evaluate(model, data_loader=None):
     total = 0
     model.eval()
     for img, label in data_loader:
-        # img, label = img.to("cuda"), label.to("cuda")
+        img, label = img.to("cuda"), label.to("cuda") #COMMENT LINE IF NOT USING GPU
         output = model(img)
 
         #Track accuracy
@@ -63,7 +63,7 @@ def train_model(model, optimizer, optimize, max_epochs):
         #Train on the training set
         model.train()
         for img, label in train_loader:
-            # img, label = img.to("cuda"), label.to("cuda")
+            img, label = img.to("cuda"), label.to("cuda") #COMMENT LINE IF NOT USING GPU
             optimize(model, optimizer, img, label)
 
         #Evaluate on the validation set
